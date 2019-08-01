@@ -1,0 +1,142 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="App_EditTextStyle">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lines">1</item>
+        <item name="android:padding">@dimen/padding_5</item>
+    </style>
+
+    <style name="App_EditTextStyle_with_margin">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lines">1</item>
+        <item name="android:padding">@dimen/padding_5</item>
+        <item name="android:drawablePadding">@dimen/padding_15</item>
+        <item name="android:layout_marginTop">@dimen/margin_10</item>
+        <item name="android:layout_marginBottom">@dimen/margin_10</item>
+        <item name="android:layout_marginStart">@dimen/margin_20</item>
+        <item name="android:layout_marginEnd">@dimen/margin_20</item>
+    </style>
+
+    <style name="App_EditTextStyle_white">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lines">1</item>
+        <item name="android:drawablePadding">@dimen/padding_15</item>
+        <item name="android:padding">@dimen/padding_5</item>
+
+    </style>
+
+    <style name="App_EditTextStyle_white_with_margin">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lines">1</item>
+        <item name="android:drawablePadding">@dimen/padding_15</item>
+        <item name="android:padding">@dimen/padding_5</item>
+        <item name="android:layout_marginTop">@dimen/margin_10</item>
+        <item name="android:layout_marginBottom">@dimen/margin_10</item>
+        <item name="android:layout_marginStart">@dimen/margin_20</item>
+        <item name="android:layout_marginEnd">@dimen/margin_20</item>
+
+
+    </style>
+
+
+    <style name="App_TextViewStyle_white">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">@dimen/padding_5</item>
+    </style>
+
+    <style name="App_TextViewStyle_primary">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">@dimen/padding_5</item>
+    </style>
+
+
+    <style name="App_TextViewStyle_font_normal">
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="App_TextViewStyle_font_bold">
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="App_TextViewStyle_font_italic">
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+
+    <style name="App_ButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/txt_15</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+
+    </style>
+
+
+    <style name="App_ButtonStyle_primary">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/txt_15</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_enter</item>
+        <item name="android:windowExitAnimation">@anim/slide_pop_exit</item>
+        <item name="android:windowHideAnimation">@anim/slide_in_exit</item>
+        <item name="android:windowShowAnimation">@anim/slide_pop_enter</item>
+
+    </style>
+
+</resources>

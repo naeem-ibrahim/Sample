@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d32f2f</color>
+    <color name="colorPrimaryDark">#c62828</color>
+    <color name="colorAccent">#0d47a1</color>
+
+    <color name="green">#3A9C40</color>
+    <color name="green_dark">#33691e</color>
+    <color name="tab_color">#609279</color>
+    <color name="white">#ffffff</color>
+    <color name="white_grey">#FDFDFD</color>
+    <color name="white_t">#C8FFFFFF</color>
+
+    <color name="text_color">#850A0A0A</color>
+    <color name="text_color_b">#090909</color>
+    <color name="text_color_g">#85292929</color>
+    <color name="text_color_hint">#BEBEBE</color>
+    <color name="ext_color_hint_light">#D1D1D1</color>
+
+    <color name="gainsboro_t">#CBDEDDDC</color>
+    <color name="gainsboro">#DEDDDC</color>
+    <color name="white_smoke">#f5f5f5</color>
+    <color name="white_smoke_t">#CDF5F5F5</color>
+    <color name="red_dark_t">#C9DD0000</color>
+
+
+    <color name="trans_black_light">#2D000000</color>
+    <color name="app_color"> #337CB9</color>
+    <color name="navigation_color">#629AC9</color>
+    <color name="app_color_light">#3691DE</color>
+    <color name="dashboardIconColorgray">#E4E4E4</color>
+
+    <color name="dashboardIconColor">#86E3DC</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="dashboardTitleBackgroud">#63EAE7E7</color>
+
+    <color name="red">#d32f2f</color>
+    <color name="red_dark">#c62828</color>
+    <color name="snow">#fdfcfc</color>
+
+    <color name="gray_light">#919191</color>
+    <color name="gray_too_light">#C0C0C0</color>
+
+</resources>
