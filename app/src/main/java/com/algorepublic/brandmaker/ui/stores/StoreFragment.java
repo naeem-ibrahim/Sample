@@ -1,7 +1,6 @@
 package com.algorepublic.brandmaker.ui.stores;
 
 
-import android.animation.Animator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,26 +16,21 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 
 public class StoreFragment extends Fragment {
-    private static StoreFragment fragment;
-    private StoreDataBinding b;
+    private StoreDataBinding binding;
     private AdaptorRVStore adaptor;
-    private StoretViewModel vm;
+    private StoreViewModel viewModel;
 
     int totalItemCount, lastVisibleItem;
     GridLayoutManager layoutManager;
-    private int visibleThreshold = 5;
 
     public static StoreFragment getInstance() {
-        if (fragment == null) {
-            fragment = new StoreFragment();
-        }
+        StoreFragment fragment = new StoreFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -47,32 +41,32 @@ public class StoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         initBining(inflater, container);
-        vm.storeListAPI();
-        return b.getRoot();
+        viewModel.storeListAPI();
+        return binding.getRoot();
     }
 
     private void initBining(LayoutInflater inflater, ViewGroup container) {
-        b = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false);
-        vm = ViewModelProviders.of(this).get(StoretViewModel.class);
-        b.setStore(vm);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false);
+        viewModel = ViewModelProviders.of(this).get(StoreViewModel.class);
+        binding.setStore(viewModel);
 
 
-        vm.getResponseObservable().observe(this, baseResponse -> {
+        viewModel.getResponseObservable().observe(this, baseResponse -> {
             if (baseResponse != null) {
                 if (baseResponse.isSuccess()) {
-                    vm.getStoreList().setValue(baseResponse.getData().getStores());
+                    viewModel.getStoreList().setValue(baseResponse.getData().getStores());
                 } else {
-                    Helper.snackBarWithAction(b.getRoot(), getActivity(), baseResponse.getMessage());
+                    Helper.snackBarWithAction(binding.getRoot(), getActivity(), baseResponse.getMessage());
                 }
             }
 
         });
 
-        vm.getStoreList().observe(this, storesModel -> {
+        viewModel.getStoreList().observe(this, storesModel -> {
             setRecyclerView();
         });
 
-        vm.getSearch().observe(this, s ->
+        viewModel.getSearch().observe(this, s ->
         {
             if (adaptor != null) {
                 adaptor.getFilter().filter(s);
@@ -82,13 +76,13 @@ public class StoreFragment extends Fragment {
 
 
     private void setRecyclerView() {
-        adaptor = new AdaptorRVStore(vm.getStoreList().getValue(), getActivity());
+        adaptor = new AdaptorRVStore(viewModel.getStoreList().getValue(), getActivity(),this);
         layoutManager=new GridLayoutManager(getActivity(), 2);
-        b.recyclerView.setLayoutManager(layoutManager);
-        b.recyclerView.setAdapter(adaptor);
+        binding.recyclerView.setLayoutManager(layoutManager);
+        binding.recyclerView.setAdapter(adaptor);
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(adaptor);
-        b.recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
-        b.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        binding.recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -101,16 +95,16 @@ public class StoreFragment extends Fragment {
                     YoYo.with(Techniques.SlideOutUp)
                             .duration(200)
                             .repeat(0)
-                            .onEnd(animator -> b.clSearch.setVisibility(View.GONE))
-                            .playOn(b.clSearch);
+                            .onEnd(animator -> binding.clSearch.setVisibility(View.GONE))
+                            .playOn(binding.clSearch);
                 }
                 else {
-                    if(b.clSearch.getVisibility()==View.GONE) {
+                    if(binding.clSearch.getVisibility()==View.GONE) {
                         YoYo.with(Techniques.SlideInDown)
                                 .duration(200)
                                 .repeat(0)
-                                .onEnd(animator -> b.clSearch.setVisibility(View.VISIBLE))
-                                .playOn(b.clSearch);
+                                .onEnd(animator -> binding.clSearch.setVisibility(View.VISIBLE))
+                                .playOn(binding.clSearch);
                     }
                 }
             }

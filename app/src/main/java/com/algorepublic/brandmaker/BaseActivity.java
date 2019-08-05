@@ -93,26 +93,21 @@ public class BaseActivity extends AppCompatActivity {
                 .replace(containerId, fragment, tag);
 
         if (tag != null)
-            transaction.addToBackStack(tag)
-                    .commit();
+            transaction.addToBackStack(tag).commit();
         else
-            transaction
-                    .commit();
+            transaction.commit();
     }
 
     public void callFragmentWithoutAnimation(int containerId, Fragment fragment, String tag) {
-
 
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
                 .replace(containerId, fragment, tag);
 
         if (tag != null)
-            transaction.addToBackStack(tag)
-                    .commit();
+            transaction.addToBackStack(tag).commit();
         else
-            transaction
-                    .commit();
+            transaction.addToBackStack(null).commit();
     }
 
 

@@ -11,9 +11,10 @@
     <string name="email">Email</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="search_for_a_store">Search for a store..</string>
-    <string name="view_store_new_me">View store new me</string>
+    <string name="view_store_near_me">View store near me</string>
     <string name="check_in">Check In</string>
     <string name="take_a_photo">TAKE A PHOTO</string>
+    <string name="description">Have you greeted the Manager and asked permission to conduct your call?</string>
     <string name="photo_description">Please take a picture of the POS\next to the product in store.</string>
     <string name="comment">comment...</string>
     <string name="save">Save</string>

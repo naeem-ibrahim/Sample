@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
@@ -12,18 +11,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.algorepublic.brandmaker.BMApp;
-import com.algorepublic.brandmaker.MainActivity;
+import com.algorepublic.brandmaker.ui.dashboard.MainActivity;
 import com.algorepublic.brandmaker.R;
 import com.algorepublic.brandmaker.databinding.LoginDataBinding;
-import com.algorepublic.brandmaker.model.BaseResponse;
 import com.algorepublic.brandmaker.utils.Helper;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 public class LoginActivity extends AppCompatActivity {

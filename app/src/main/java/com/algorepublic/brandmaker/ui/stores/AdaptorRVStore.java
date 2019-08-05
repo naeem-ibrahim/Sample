@@ -4,16 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.algorepublic.brandmaker.BaseActivity;
 import com.algorepublic.brandmaker.R;
 import com.algorepublic.brandmaker.model.StoresModel;
+import com.algorepublic.brandmaker.ui.dashboard.MainActivity;
+import com.algorepublic.brandmaker.ui.storedetails.StoreDetailsFragment;
+import com.algorepublic.brandmaker.ui.tabs.CategoryCheckoutTab;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -25,21 +30,21 @@ public class AdaptorRVStore extends RecyclerView.Adapter<AdaptorRVStore.ViewHold
     private Context context;
     private ArrayList<StoresModel> items;
     private ItemFilter mFilter = new ItemFilter();
-
+    private Fragment fragment;
 
     public interface OnListItemClickedListener {
         public void OnReply(int position, String data);
     }
 
-
     public interface OnListItemLongClickedListener {
         public void OnReply(int position, String data);
     }
 
-    public AdaptorRVStore(ArrayList<StoresModel> data, Context context) {
+    public AdaptorRVStore(ArrayList<StoresModel> data, Context context,Fragment fragment) {
         this.data = data;
         this.context = context;
-        items=data;
+        this.fragment = fragment;
+        items = data;
     }
 
     // Create new views (invoked by the layout manager)
@@ -56,10 +61,20 @@ public class AdaptorRVStore extends RecyclerView.Adapter<AdaptorRVStore.ViewHold
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final ViewHolder vh, final int position) {
-//    vh.tv_title.setText(data.get(position).getStoreName());
-//    vh.tv_des.setText(data.get(position).getStoreFormat());
-}
+        vh.button_checkIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((BaseActivity) context).callFragmentWithoutAnimation(R.id.container, CategoryCheckoutTab.getInstance(), null);
+            }
+        });
 
+        vh.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((BaseActivity) context).callFragmentWithoutAnimation(R.id.container, StoreDetailsFragment.getInstance(), null);
+            }
+        });
+    }
 
     public void setOnListItemClickedListener(OnListItemClickedListener listener) {
         this.listener = listener;
@@ -72,14 +87,18 @@ public class AdaptorRVStore extends RecyclerView.Adapter<AdaptorRVStore.ViewHold
     // inner class to hold a reference to each item of RecyclerView
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_title,tv_des,tv_location,tv_distance;
+        TextView tv_title, tv_des, tv_location, tv_distance;
+        CardView cardView;
+        Button button_checkIn;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            tv_title=itemLayoutView.findViewById(R.id.tv_title);
-            tv_des=itemLayoutView.findViewById(R.id.tv_des);
-            tv_location=itemLayoutView.findViewById(R.id.tv_location);
-            tv_distance=itemLayoutView.findViewById(R.id.tv_distance);
+            tv_title = itemLayoutView.findViewById(R.id.tv_title);
+            tv_des = itemLayoutView.findViewById(R.id.tv_des);
+            tv_location = itemLayoutView.findViewById(R.id.tv_location);
+            tv_distance = itemLayoutView.findViewById(R.id.tv_distance);
+            cardView = itemLayoutView.findViewById(R.id.cardView);
+            button_checkIn = itemLayoutView.findViewById(R.id.button_checkIn);
         }
     }
 

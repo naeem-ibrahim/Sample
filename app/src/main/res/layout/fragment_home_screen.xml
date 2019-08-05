@@ -20,10 +20,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TableLayout
+        <View
+            app:layout_constraintBottom_toTopOf="@id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/text_color_g"/>
+
+        <com.google.android.material.tabs.TabLayout
+            app:tabTextAppearance="@style/MineCustomTabText"
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="57dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +38,8 @@
             app:tabGravity="fill"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/gray_light" />
+            app:tabSelectedTextColor="@color/red"
+            app:tabTextColor="@color/text_color_g"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

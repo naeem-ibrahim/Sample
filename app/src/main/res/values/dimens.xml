@@ -90,7 +90,7 @@
     <dimen name="view_size_1">1dp</dimen>
     <dimen name="view_size">0.5dp</dimen>
 
-    <dimen name="splash_logo_h">200dp</dimen>
+    <dimen name="splash_logo_h">210dp</dimen>
     <dimen name="login_logo_h">120dp</dimen>
     <dimen name="login_bg">340dp</dimen>
 

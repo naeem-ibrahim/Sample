@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_start"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_center"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_end"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:padding="@dimen/padding_15"
+            android:id="@+id/tv_tab_1"
+            android:text="Category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_center"
+            app:layout_constraintStart_toStartOf="@id/guideLine_start"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginEnd="@dimen/margin_5"
+            android:id="@+id/view"
+            android:background="@color/red"
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_1"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_center"
+            app:layout_constraintStart_toStartOf="@id/guideLine_start"
+            android:layout_width="0dp"
+            android:layout_height="2dp"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/text_color_g"
+            android:padding="@dimen/padding_15"
+            android:id="@+id/tv_tab_2"
+            android:text="Category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_end"
+            app:layout_constraintStart_toStartOf="@id/guideLine_center"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginStart="@dimen/margin_5"
+            android:id="@+id/view_2"
+            android:background="@color/text_color_g"
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_2"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_end"
+            app:layout_constraintStart_toEndOf="@id/guideLine_center"
+            android:layout_width="0dp"
+            android:layout_height="2dp"/>
+
+        <!--<androidx.viewpager.widget.ViewPager-->
+            <!--android:id="@+id/viewPager"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:background="@color/white"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/view" />-->
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@id/guideLine_start"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_end"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

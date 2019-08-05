@@ -5,15 +5,17 @@
     <data class="StoreDataBinding">
         <variable
             name="store"
-            type="com.algorepublic.brandmaker.ui.stores.StoretViewModel" />
+            type="com.algorepublic.brandmaker.ui.stores.StoreViewModel" />
     </data>
 
     <LinearLayout
+        android:background="@drawable/home_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="13dp"
             android:id="@+id/cl_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +66,7 @@
                 android:layout_marginStart="@dimen/margin_50"
                 android:layout_marginEnd="@dimen/margin_50"
                 android:background="@drawable/button_round_red"
-                android:text="@string/view_store_new_me"
+                android:text="@string/view_store_near_me"
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

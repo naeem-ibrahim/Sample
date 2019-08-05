@@ -1,157 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_grey"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_15"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/size_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/white_grey"
+        android:orientation="vertical">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:padding="@dimen/margin_10"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tv_title_1"
-                style="@style/App_TextViewStyle_font_bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/padding_7"
-                android:text="@string/photo_description"
-                android:textColor="@color/text_color_g"
-                android:textSize="@dimen/txt_15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/et_comment"
-                style="@style/App_EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_10"
-                android:background="@drawable/edittext_bg_gray"
-                android:gravity="start"
-                android:hint="@string/comment"
-                android:lines="10"
-                android:padding="@dimen/padding_10"
-                android:textColor="@color/text_color_g"
-                android:textColorHint="@color/ext_color_hint_light"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_1" />
-
-            <Button
-                android:id="@+id/bt_save_1"
-                style="@style/App_ButtonStyle"
-                android:layout_width="@dimen/size_200"
-                android:layout_height="@dimen/button_40"
-                android:layout_marginTop="@dimen/margin_20"
-                android:layout_marginBottom="@dimen/margin_5"
-                android:background="@drawable/button_round_green"
-                android:text="@string/save"
-                android:textSize="@dimen/txt_13"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_comment"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_15"
-        android:layout_marginTop="40dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/size_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toBottomOf="@id/cv_2"
+            android:id="@+id/cv_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/margin_10">
+            android:layout_margin="@dimen/margin_15"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/size_5"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/tv_title_2"
-                style="@style/App_TextViewStyle_font_bold"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tv_title_1"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_7"
+                    android:text="@string/description"
+                    android:textColor="@color/text_color_g"
+                    android:textSize="@dimen/txt_15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_comment"
+                    style="@style/App_EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_10"
+                    android:background="@drawable/edittext_bg_gray"
+                    android:gravity="start"
+                    android:hint="@string/comment"
+                    android:lines="10"
+                    android:padding="@dimen/padding_10"
+                    android:textColor="@color/text_color_g"
+                    android:textColorHint="@color/ext_color_hint_light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_1" />
+
+                <Button
+                    android:id="@+id/bt_save_1"
+                    style="@style/App_ButtonStyle"
+                    android:layout_width="@dimen/size_200"
+                    android:layout_height="@dimen/button_40"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:background="@drawable/button_round_green"
+                    android:text="@string/save"
+                    android:textSize="@dimen/txt_13"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_comment"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/size_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/padding_7"
-                android:text="@string/photo_description"
-                android:textColor="@color/text_color_g"
-                android:textSize="@dimen/txt_15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:background="@color/white"
+                android:padding="@dimen/margin_10">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_7"
+                    android:text="@string/description"
+                    android:textColor="@color/text_color_g"
+                    android:textSize="@dimen/txt_15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                />
-
-            <Button
-                android:id="@+id/bt_yes"
-                style="@style/App_ButtonStyle"
-                android:layout_width="@dimen/size_150"
-                android:layout_height="@dimen/button_40"
-                android:layout_margin="@dimen/margin_10"
-                android:background="@drawable/button_round_green"
-                android:text="@string/yes"
-                android:textSize="@dimen/txt_13"
-                app:layout_constraintEnd_toStartOf="@+id/guideLine"
-                app:layout_constraintHorizontal_bias="0.01"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_2" />
-
-            <Button
-                android:id="@+id/bt_no"
-                style="@style/App_ButtonStyle"
-                android:layout_width="@dimen/size_150"
-                android:layout_height="@dimen/button_40"
-                android:layout_margin="@dimen/margin_10"
-                android:background="@drawable/button_round_red"
-                android:text="@string/no"
-                android:textSize="@dimen/txt_13"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/guideLine"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_2" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_margin="@dimen/margin_10"
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layerType="software"
+                    android:src="@drawable/dotted"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5"/>
+
+                <Button
+                    android:id="@+id/bt_yes"
+                    style="@style/App_ButtonStyle"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/button_40"
+                    android:layout_margin="@dimen/margin_10"
+                    android:background="@drawable/button_round_green"
+                    android:text="@string/yes"
+                    android:textSize="@dimen/txt_13"
+                    app:layout_constraintEnd_toStartOf="@+id/guideLine"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                <Button
+                    android:id="@+id/bt_no"
+                    style="@style/App_ButtonStyle"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/button_40"
+                    android:layout_margin="@dimen/margin_10"
+                    android:background="@drawable/button_round_red"
+                    android:text="@string/no"
+                    android:textSize="@dimen/txt_13"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

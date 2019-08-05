@@ -2,8 +2,10 @@ package com.algorepublic.brandmaker.ui.splash;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.algorepublic.brandmaker.BMApp;
 import com.algorepublic.brandmaker.R;
 import com.algorepublic.brandmaker.databinding.ActivitySplashBinding;
+import com.algorepublic.brandmaker.ui.dashboard.MainActivity;
 import com.algorepublic.brandmaker.ui.login.LoginActivity;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -34,8 +36,14 @@ public class SplashActivity extends AppCompatActivity {
                             .duration(1000)
                             .repeat(0)
                             .playOn(b.cv));
+
+                    if(BMApp.db.getUserObj().getToken()!=null && !BMApp.db.getUserObj().getToken().equals("")) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }else {
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                         finish();
+                    }
                 }
             }
         };

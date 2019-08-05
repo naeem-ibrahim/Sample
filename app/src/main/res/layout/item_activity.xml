@@ -26,8 +26,8 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="@dimen/icon_size_60"
-                android:layout_height="@dimen/icon_size_60"
+                android:layout_width="@dimen/icon_size_80"
+                android:layout_height="@dimen/icon_size_80"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_mail" />
@@ -50,18 +50,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/tv_check_in_time"
             style="@style/App_TextViewStyle_font_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/text_color_b"
+            android:text="Check in - 02-08-2019 - 09:00 AM"
+            android:textColor="@color/text_color"
             android:textSize="@dimen/txt_12"
             android:layout_marginStart="@dimen/margin_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_check_out_time"
+            style="@style/App_TextViewStyle_font_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkout - 02-08-2019 - 11:00 AM"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/txt_12"
+            android:layout_marginStart="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_check_in_time" />
 
         <View
             android:id="@+id/view"
@@ -72,7 +87,7 @@
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_check_out_time" />
 
         <TextView
             android:id="@+id/tv_des"
@@ -80,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_b"
             android:textSize="@dimen/txt_14"
             android:layout_marginTop="@dimen/margin_5"
             android:layout_marginStart="@dimen/margin_15"

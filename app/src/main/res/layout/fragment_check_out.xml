@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="CheckoutDataBinding">
+        <variable
+            name="Checkout"
+            type="com.algorepublic.brandmaker.ui.checkout.CheckOutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="-100dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/checkout_bg"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_10"
+            android:background="@color/transparent"
+            app:cardCornerRadius="@dimen/margin_5">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/paddig_20"
+                android:paddingBottom="@dimen/paddig_20"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_margin="@dimen/margin_15"
+                    android:id="@+id/tv_msg"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:text="Are you sure you want to checkout?"
+                    android:gravity="center"
+                    android:textColor="@color/text_color_b"
+                    android:textSize="@dimen/txt_16"
+                    app:layout_constraintBottom_toTopOf="@id/view"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <View
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:id="@+id/view"
+                    app:layout_constraintTop_toBottomOf="@id/tv_msg"
+                    android:background="@color/red"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:textColor="@color/white"
+                    android:textAllCaps="true"
+                    android:text="Checkout"
+                    android:background="@color/red"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

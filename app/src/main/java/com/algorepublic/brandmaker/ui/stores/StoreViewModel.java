@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-public class StoretViewModel extends ViewModel {
+public class StoreViewModel extends ViewModel {
 
     private MutableLiveData<BaseResponse> responseObservable;
     private MutableLiveData<ArrayList<StoresModel>> storeList;
