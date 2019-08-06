@@ -165,9 +165,8 @@
 
                 <Button
                     android:id="@+id/btn_login"
-                    style="@style/App_ButtonStyle"
-                    android:layout_width="140dp"
-                    android:layout_height="@dimen/button_40"
+                    android:layout_width="160dp"
+                    android:layout_height="@dimen/button_50"
                     android:background="@drawable/button_round_white"
                     android:text="@string/login"
                     android:textAllCaps="true"

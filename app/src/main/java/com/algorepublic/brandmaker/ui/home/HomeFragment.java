@@ -21,22 +21,27 @@ import androidx.viewpager.widget.ViewPager;
 public class HomeFragment extends Fragment {
     private static HomeFragment fragment;
      FragmentHomeScreenBinding b;
+     int selectTab;
 
-    int[] tabIcons = new int[]{R.drawable.ic_list, R.drawable.ic_marker,R.drawable.ic_action,R.drawable.ic_notifications};
+    int[] tabIcons = new int[]{R.drawable.activity_inactive, R.drawable.ic_marker,R.drawable.ic_action,R.drawable.notification_inactive};
 
-    public static HomeFragment getInstance() {
-        if (fragment == null) {
-            fragment = new HomeFragment();
-        }
+    public static HomeFragment getInstance(int selected) {
+//        if (fragment == null) {
+//            fragment = new HomeFragment();
+//        }
+        fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        args.putInt("Selected",selected);
+        fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = DataBindingUtil.inflate(inflater, R.layout.fragment_home_screen, container, false);
+        selectTab=getArguments().getInt("Selected");
         setupViewPager();
         return b.getRoot();
     }
@@ -84,6 +89,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+                selectTab=position;
                 String selectedTabName="Store Near Me";
                 if(position==0){
                     selectedTabName="Activity";
@@ -99,11 +105,9 @@ public class HomeFragment extends Fragment {
         });
         b.tabs.setupWithViewPager(b.vp);
         setupTabIcons();
-
-//        b.tabs.setScrollPosition(1,0f,true);
-//        b.vp.setCurrentItem(1);
-        b.tabs.getTabAt(1).select();
+        b.tabs.getTabAt(selectTab).select();
     }
+
 
 
 }

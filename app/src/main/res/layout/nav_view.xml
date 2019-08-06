@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_15"
+            android:contentDescription="@string/nav_header_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="@string/nav_header_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/text_color_b"
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintStart_toEndOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10"
+            android:text="@string/nav_header_subtitle"
+            android:textColor="@color/text_color_g"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/sep"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/red"
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
+
+    <LinearLayout
+        android:background="@drawable/menu_bg"
+        android:paddingTop="@dimen/margin_20"
+        android:id="@+id/nav_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/sep">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nav_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:onClick="onNavigationItemClick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/iv_activity"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/activity_inactive"
+                android:tint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="Activity"
+                android:textColor="@color/text_color_b"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_activity"
+                app:layout_constraintStart_toEndOf="@+id/iv_activity"
+                app:layout_constraintTop_toTopOf="@+id/iv_activity" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:background="@color/gainsboro"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nav_check_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:onClick="onNavigationItemClick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/iv_check_in"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_marker"
+                android:tint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="Check In"
+                android:textColor="@color/text_color_b"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_check_in"
+                app:layout_constraintStart_toEndOf="@+id/iv_check_in"
+                app:layout_constraintTop_toTopOf="@+id/iv_check_in" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:background="@color/gainsboro"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nav_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:onClick="onNavigationItemClick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/iv_notification"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/notification_inactive"
+                android:tint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="Notification"
+                android:textColor="@color/text_color_b"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_notification"
+                app:layout_constraintStart_toEndOf="@+id/iv_notification"
+                app:layout_constraintTop_toTopOf="@+id/iv_notification" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:background="@color/gainsboro"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nav_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:onClick="onNavigationItemClick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/iv_contact"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_contact"
+                android:tint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="Contact"
+                android:textColor="@color/text_color_b"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_contact"
+                app:layout_constraintStart_toEndOf="@+id/iv_contact"
+                app:layout_constraintTop_toTopOf="@+id/iv_contact" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:background="@color/gainsboro"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/logout"
+        android:text="Logout"
+        android:textColor="#e9e9e9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

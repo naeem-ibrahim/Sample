@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
                             .repeat(0)
                             .playOn(b.cv));
 
-                    if(BMApp.db.getUserObj().getToken()!=null && !BMApp.db.getUserObj().getToken().equals("")) {
+                    if(BMApp.db.getUserObj()!=null && BMApp.db.getUserObj().getToken()!=null && !BMApp.db.getUserObj().getToken().equals("")) {
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
                     }else {

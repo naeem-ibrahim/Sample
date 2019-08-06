@@ -40,7 +40,6 @@ public class ApiClient {
         return instance;
     }
 
-
     final static OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
@@ -57,7 +56,6 @@ public class ApiClient {
         return retrofit;
     }
 
-
     public void Login(String email, String password, Callback<BaseResponse> callback) {
         Map<String, String> hash = new HashMap<>();
         hash.put("user[email]", email);
@@ -66,15 +64,12 @@ public class ApiClient {
         call.enqueue(callback);
     }
 
-
-
     public void ForgotPassword(String email, Callback<BaseResponse> callback) {
         Map<String, String> hash = new HashMap<>();
         hash.put("email", email);
         Call<BaseResponse> call = apiService.ForgotPassword(hash);
         call.enqueue(callback);
     }
-
 
     public void ResetPassword(String email, String code,String password, Callback<BaseResponse> callback) {
         Map<String, String> hash = new HashMap<>();
