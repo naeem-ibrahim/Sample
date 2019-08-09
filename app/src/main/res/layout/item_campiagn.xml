@@ -14,35 +14,23 @@
         android:background="@color/white"
         android:padding="@dimen/paddig_17">
 
-
-        <TextView
-            android:id="@+id/tv_count"
-            style="@style/App_TextViewStyle_font_bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:textSize="@dimen/txt_16"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
         <TextView
             android:layout_marginStart="@dimen/margin_10"
             android:layout_marginEnd="@dimen/margin_10"
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_question"
             style="@style/App_TextViewStyle_font_normal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Have you greeted Manager?"
             android:textSize="@dimen/txt_16"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_count"
-            app:layout_constraintEnd_toStartOf="@id/cb_select_all"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/complete_checkbox"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <CheckBox
-            android:id="@+id/cb_select_all"
+            android:buttonTint="@color/green"
+            android:id="@+id/complete_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

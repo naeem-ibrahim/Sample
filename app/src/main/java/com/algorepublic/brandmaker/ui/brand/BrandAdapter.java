@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.algorepublic.brandmaker.BaseActivity;
 import com.algorepublic.brandmaker.R;
+import com.algorepublic.brandmaker.model.BrandModel;
 import com.algorepublic.brandmaker.ui.tabs.CampaignTasksTab;
 
 import java.util.List;
@@ -19,11 +20,11 @@ import java.util.List;
  */
 public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.RowViewHolder> {
 
-    private List<String> myActivities;
+    private List<BrandModel> brandsArrayList;
     private Context mContext;
 
-    public BrandAdapter(Context mContext, List<String> myActivities) {
-        this.myActivities = myActivities;
+    public BrandAdapter(Context mContext, List<BrandModel> brandsArrayList) {
+        this.brandsArrayList = brandsArrayList;
         this.mContext = mContext;
     }
 
@@ -35,17 +36,19 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.RowViewHolde
 
     @Override
     public void onBindViewHolder(RowViewHolder holder, final int position) {
+        BrandModel brand= brandsArrayList.get(position);
+        holder.tv_title.setText(brand.getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((BaseActivity) mContext).callFragmentWithoutAnimation(R.id.container, CampaignTasksTab.getInstance(), null);
+                ((BaseActivity) mContext).callFragmentWithoutAnimation(R.id.container, CampaignTasksTab.getInstance(brand.getId(),brand.getName()), null);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return myActivities == null ? 0 : myActivities.size();
+        return brandsArrayList == null ? 0 : brandsArrayList.size();
     }
 
     class RowViewHolder extends RecyclerView.ViewHolder {

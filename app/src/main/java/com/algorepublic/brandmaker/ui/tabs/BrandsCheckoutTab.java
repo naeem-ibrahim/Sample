@@ -12,8 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.algorepublic.brandmaker.R;
 import com.algorepublic.brandmaker.databinding.FragmentTabsBinding;
 import com.algorepublic.brandmaker.ui.brand.BrandFragment;
-import com.algorepublic.brandmaker.ui.campaign.CampaignFragment;
-import com.algorepublic.brandmaker.ui.category.CategoryFragment;
 import com.algorepublic.brandmaker.ui.checkout.CheckOutFragment;
 import com.algorepublic.brandmaker.ui.dashboard.MainActivity;
 import com.algorepublic.brandmaker.ui.home.ViewPagerAdapter;
@@ -24,14 +22,20 @@ import com.algorepublic.brandmaker.ui.home.ViewPagerAdapter;
 public class BrandsCheckoutTab extends Fragment {
     private static BrandsCheckoutTab fragment;
     private FragmentTabsBinding b;
+    private int categoryId;
+    private int storeID;
+    private String categoryName;
 
 
-    public static BrandsCheckoutTab getInstance() {
+    public static BrandsCheckoutTab getInstance(int categoryId,int storeId,String categoryName) {
 
         if (fragment == null) {
             fragment = new BrandsCheckoutTab();
         }
         Bundle args = new Bundle();
+        args.putInt("CategoryID",categoryId);
+        args.putInt("StoreID",storeId);
+        args.putString("CategoryName",categoryName);
         fragment.setArguments(args);
 
         return fragment;
@@ -41,7 +45,9 @@ public class BrandsCheckoutTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = DataBindingUtil.inflate(inflater, R.layout.fragment_tabs, container, false);
-
+        categoryId=getArguments().getInt("CategoryID");
+        storeID=getArguments().getInt("StoreID");
+        categoryName=getArguments().getString("CategoryName");
 
         b.tvTab1.setText("Brands");
         b.tvTab2.setText("Checkout");
@@ -79,10 +85,10 @@ public class BrandsCheckoutTab extends Fragment {
     private void setupViewPager() {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        ((MainActivity) getContext()).setToolBar("Hello", "Check In 05-08-2019 - 11:00 PM", true);
-        adapter.addFragment(BrandFragment.getInstance(), "Brands");
+        ((MainActivity) getContext()).setToolBar(categoryName, "Check In 05-08-2019 - 11:00 PM", true);
+        adapter.addFragment(BrandFragment.getInstance(categoryId), "Brands");
 
-        adapter.addFragment(CheckOutFragment.getInstance(), "Checkout");
+        adapter.addFragment(CheckOutFragment.getInstance(storeID), "Checkout");
 
 
         b.viewPager.setAdapter(adapter);

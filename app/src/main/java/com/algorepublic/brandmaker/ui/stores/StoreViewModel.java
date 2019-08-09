@@ -3,6 +3,7 @@ package com.algorepublic.brandmaker.ui.stores;
 import com.algorepublic.brandmaker.apirepository.AllAPIRepository;
 import com.algorepublic.brandmaker.model.BaseResponse;
 import com.algorepublic.brandmaker.model.StoresModel;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class StoreViewModel extends ViewModel {
     private MutableLiveData<BaseResponse> responseObservable;
     private MutableLiveData<ArrayList<StoresModel>> storeList;
     private MutableLiveData<String> search;
-    private MutableLiveData<Boolean> isLoding;
+    private MutableLiveData<Boolean> isLoading;
 
     public MutableLiveData<String> getSearch() {
         if (search == null) {
@@ -24,11 +25,11 @@ public class StoreViewModel extends ViewModel {
         return search;
     }
 
-    public MutableLiveData<Boolean> getIsLoding() {
-        if (isLoding == null) {
-            isLoding = new MutableLiveData<>();
+    public MutableLiveData<Boolean> getIsLoading() {
+        if (isLoading == null) {
+            isLoading = new MutableLiveData<>();
         }
-        return isLoding;
+        return isLoading;
     }
 
     public MutableLiveData<BaseResponse> getResponseObservable() {
@@ -46,11 +47,10 @@ public class StoreViewModel extends ViewModel {
     }
 
     public void storeListAPI() {
-        getIsLoding().setValue(true);
+        getIsLoading().setValue(true);
         AllAPIRepository.getInstance().StoreList().observeForever(baseResponse -> {
-            getIsLoding().setValue(false);
+            getIsLoading().setValue(false);
             responseObservable.setValue(baseResponse);
         });
-
     }
 }

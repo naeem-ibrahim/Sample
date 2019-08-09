@@ -63,11 +63,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/view1">
 
                     <ImageView
-                        android:id="@+id/iv_logo"
+                        android:id="@+id/answer_photo"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/icon_size_110"
+                        android:layout_height="130dp"
                         android:layout_gravity="center"
-                        android:layout_margin="@dimen/margin_20"
+                        android:layout_margin="@dimen/margin_10"
                         android:adjustViewBounds="true"
                         android:src="@drawable/ic_mail"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,7 +91,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cv_2" />
-
 
                 <Button
                     android:id="@+id/button"

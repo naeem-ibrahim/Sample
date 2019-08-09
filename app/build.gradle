@@ -30,6 +30,8 @@ android {
 
 
 dependencies {
+    def google_location_version = "17.0.0"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     implementation 'com.google.android.material:material:1.0.0'
@@ -48,6 +50,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
 
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
+
+    implementation "com.google.android.gms:play-services-location:$google_location_version"
+
+    // Image Loading
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Lifecycles
     implementation 'android.arch.lifecycle:extensions:1.1.1'

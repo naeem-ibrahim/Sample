@@ -51,7 +51,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+            android:id="@+id/map_navigation_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_10"
@@ -64,13 +64,14 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/tv_title"
                 style="@style/App_TextViewStyle_font_normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="@dimen/padding_7"
-                android:text="@string/app_name"
+                android:text="Navigation to Store"
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_16" />
 

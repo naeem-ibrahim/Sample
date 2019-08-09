@@ -86,8 +86,6 @@ public class TinyDB {
         return  obj;
     }
 
-
-
     /**
      * Returns the String path of the last saved image
      * @return string path of the last saved image

@@ -1074,6 +1074,24 @@ public class Helper {
         return path + "/Profile/" + "profile.jpg";
     }
 
+    public static String getRealPathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } catch (Exception e) {
+            Log.e("E", "getRealPathFromURI Exception : " + e.toString());
+            return "";
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
     public static void getHashKey(Context context) {
         // Add code to print out the key hash
         try {
@@ -1102,7 +1120,7 @@ public class Helper {
         TextView tv_action = custom.findViewById(R.id.tv_action);
         CardView cv=custom.findViewById(R.id.cv);
         tv_msg.setText(errorMsg);
-        tv_action.setText("OK");
+        tv_action.setText("Okay");
         tv_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,7 +2,9 @@ package com.algorepublic.brandmaker.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StoresModel {
+import java.io.Serializable;
+
+public class StoresModel implements Serializable {
 
     @SerializedName("id")
     private int id;
@@ -13,7 +15,7 @@ public class StoresModel {
     @SerializedName("address")
     private Object address;
     @SerializedName("store_format")
-    private String storeFormat;
+    private StoreFormat storeFormat;
     @SerializedName("store_cluster")
     private int storeCluster;
     @SerializedName("store_location")
@@ -42,7 +44,7 @@ public class StoresModel {
         return address;
     }
 
-    public String getStoreFormat() {
+    public StoreFormat getStoreFormat() {
         return storeFormat;
     }
 
@@ -64,5 +66,33 @@ public class StoresModel {
 
     public String getLongitude() {
         return longitude;
+    }
+
+
+    public class StoreFormat implements Serializable {
+        @SerializedName("id")
+        private int formatId;
+        @SerializedName("format_name")
+        private String formatName;
+        @SerializedName("createdAt")
+        private String created_at;
+        @SerializedName("updated_at")
+        private String updatedAt;
+
+        public int getFormatId() {
+            return formatId;
+        }
+
+        public String getFormatName() {
+            return formatName;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public String getUpdatedAt() {
+            return updatedAt;
+        }
     }
 }

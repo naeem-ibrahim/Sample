@@ -53,6 +53,7 @@
                     android:layout_height="1dp"/>
 
                 <Button
+                    android:id="@+id/check_out_button"
                     android:layout_marginTop="@dimen/margin_20"
                     android:textColor="@color/white"
                     android:textAllCaps="true"

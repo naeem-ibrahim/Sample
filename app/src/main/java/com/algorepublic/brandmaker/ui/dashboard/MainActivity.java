@@ -1,13 +1,25 @@
 package com.algorepublic.brandmaker.ui.dashboard;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.algorepublic.brandmaker.BMApp;
 import com.algorepublic.brandmaker.BaseActivity;
 import com.algorepublic.brandmaker.R;
+import com.algorepublic.brandmaker.ui.answers.options.OptionsFragment;
 import com.algorepublic.brandmaker.ui.home.HomeFragment;
 
+import com.algorepublic.brandmaker.ui.login.LoginActivity;
+import com.algorepublic.brandmaker.ui.splash.SplashActivity;
+import com.algorepublic.brandmaker.ui.tabs.CategoryCheckoutTab;
+import com.algorepublic.brandmaker.utils.Constants;
+import com.algorepublic.brandmaker.utils.GPSListener;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,6 +36,9 @@ public class MainActivity extends BaseActivity {
 
     TextView toolbarTitle;
     TextView toolbarTime;
+    TextView navHeaderTitle;
+    TextView navHeaderEmail;
+    private GPSListener gpsListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +48,13 @@ public class MainActivity extends BaseActivity {
         ImageView back = (ImageView) findViewById(R.id.btnBack);
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTime = (TextView) findViewById(R.id.toolbar_time);
+        navHeaderTitle = (TextView) findViewById(R.id.nav_header_title);
+        navHeaderEmail = (TextView) findViewById(R.id.nav_header_email);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        navHeaderTitle.setText(BMApp.db.getUserObj().getFirstName() + BMApp.db.getUserObj().getLastName());
+        navHeaderEmail.setText(BMApp.db.getUserObj().getEmail());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,7 +62,15 @@ public class MainActivity extends BaseActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        callFragmentAdd(R.id.container, HomeFragment.getInstance(1), null);
+
+        if(BMApp.db.getBoolean(Constants.CHECK_IN)) {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            callFragmentAdd(R.id.container, CategoryCheckoutTab.getInstance(BMApp.db.getInt(Constants.CHECKED_IN_STORE_ID),BMApp.db.getString(Constants.CHECKED_IN_STORE_NAME)), null);
+        }else {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            callFragmentAdd(R.id.container, HomeFragment.getInstance(1), null);
+        }
+//        callFragmentAdd(R.id.container,  OptionsFragment.getInstance(false), null);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +78,17 @@ public class MainActivity extends BaseActivity {
                 onBackPressed();
             }
         });
+    }
+
+    public void reload(){
+        Intent intent = getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        startActivity(intent);
+    }
+
+    public void setListener(GPSListener listener){
+        this.gpsListener = listener ;
     }
 
     public void setToolBar(String title, String time, boolean showTime) {
@@ -87,10 +126,32 @@ public class MainActivity extends BaseActivity {
         } else if (id == R.id.nav_notification) {
             callFragmentAdd(R.id.container, HomeFragment.getInstance(2), null);
         } else if (id == R.id.nav_contact) {
+
+        } else if (id == R.id.tv_logout) {
+            BMApp.db.setUserObg(null);
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Constants.GPS_REQUEST) {
+                if(gpsListener!=null) {
+                    gpsListener.onEnable(true);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

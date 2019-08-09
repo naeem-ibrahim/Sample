@@ -17,9 +17,7 @@
         android:padding="@dimen/padding_1"
         android:elevation="@dimen/size_20"
         app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardCornerRadius="@dimen/size_7"
-
-        >
+        app:cardCornerRadius="@dimen/size_7">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

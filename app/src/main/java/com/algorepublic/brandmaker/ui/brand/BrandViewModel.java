@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.algorepublic.brandmaker.apirepository.AllAPIRepository;
+import com.algorepublic.brandmaker.model.BaseResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,25 +17,22 @@ import java.util.List;
  */
 public class BrandViewModel extends AndroidViewModel {
 
-    List<String> myActivities;
-    private MutableLiveData<List<String>> muteableActivities;
+
+    private MutableLiveData<BaseResponse> responseObservable;
 
     public BrandViewModel(@NonNull Application application) {
         super(application);
-        muteableActivities = new MutableLiveData<>();
-        myActivities = new ArrayList<>();
+        responseObservable = new MutableLiveData<>();
     }
 
-    public void setData(){
-        for (int i=0;i<4;i++){
-            myActivities.add("DATA");
-        }
-        muteableActivities.setValue(myActivities);
+    public MutableLiveData<BaseResponse> getResponseObservable() {
+        return responseObservable;
     }
 
-
-    public MutableLiveData<List<String>> getMyActivityList() {
-        return muteableActivities;
+    public void getBrandsApi(int id){
+        AllAPIRepository.getInstance().brandsList(id).observeForever(baseResponse -> {
+            responseObservable.setValue(baseResponse);
+        });
     }
 
 

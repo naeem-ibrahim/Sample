@@ -22,13 +22,16 @@ import com.algorepublic.brandmaker.ui.home.ViewPagerAdapter;
 public class CategoryCheckoutTab extends Fragment {
     private static CategoryCheckoutTab fragment;
     private FragmentTabsBinding b;
+    private int storeID;
+    private String storeName;
 
-
-    public static CategoryCheckoutTab getInstance() {
+    public static CategoryCheckoutTab getInstance(int storeID,String storeName) {
         if (fragment == null) {
             fragment = new CategoryCheckoutTab();
         }
         Bundle args = new Bundle();
+        args.putInt("StoreID",storeID);
+        args.putString("StoreName",storeName);
         fragment.setArguments(args);
 
         return fragment;
@@ -38,6 +41,9 @@ public class CategoryCheckoutTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = DataBindingUtil.inflate(inflater, R.layout.fragment_tabs, container, false);
+
+        storeID= getArguments().getInt("StoreID");
+        storeName= getArguments().getString("StoreName");
 
         b.tvTab1.setText("Category");
         b.tvTab2.setText("Checkout");
@@ -75,9 +81,9 @@ public class CategoryCheckoutTab extends Fragment {
     private void setupViewPager() {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        ((MainActivity) getContext()).setToolBar("Store Name", "Check In 02-08-2019 - 9:00 PM", true);
-        adapter.addFragment(CategoryFragment.getInstance(), "Category");
-        adapter.addFragment(CheckOutFragment.getInstance(), "Checkout");
+        ((MainActivity) getContext()).setToolBar(storeName, "Check In 02-08-2019 - 9:00 PM", true);
+        adapter.addFragment(CategoryFragment.getInstance(storeID), "Category");
+        adapter.addFragment(CheckOutFragment.getInstance(storeID), "Checkout");
         b.viewPager.setAdapter(adapter);
 
         b.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

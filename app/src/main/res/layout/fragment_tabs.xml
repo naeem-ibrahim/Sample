@@ -79,6 +79,32 @@
             android:layout_width="0dp"
             android:layout_height="2dp"/>
 
+        <TextView
+            android:visibility="invisible"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:padding="@dimen/padding_15"
+            android:id="@+id/tv_tab_3"
+            android:text="Tasks"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideLine_start"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_end"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/margin_5"
+            android:id="@+id/view_3"
+            android:background="@color/red"
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_3"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="@id/guideLine_start"
+            app:layout_constraintEnd_toStartOf="@id/guideLine_end"
+            android:layout_height="2dp"/>
+
         <!--<androidx.viewpager.widget.ViewPager-->
             <!--android:id="@+id/viewPager"-->
             <!--android:layout_width="match_parent"-->
@@ -88,6 +114,7 @@
             <!--app:layout_constraintTop_toBottomOf="@id/view" />-->
 
         <androidx.viewpager.widget.ViewPager
+            android:paddingTop="@dimen/padding_5"
             android:id="@+id/viewPager"
             android:layout_width="0dp"
             app:layout_constraintStart_toEndOf="@id/guideLine_start"
@@ -95,7 +122,7 @@
             android:layout_height="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view" />
+            app:layout_constraintTop_toBottomOf="@id/view_3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

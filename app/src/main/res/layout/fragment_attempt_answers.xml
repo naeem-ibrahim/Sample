@@ -9,8 +9,8 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            app:layout_constraintTop_toBottomOf="@id/cv_2"
-            android:id="@+id/cv_1"
+            app:layout_constraintTop_toBottomOf="@id/options_cardView"
+            android:id="@+id/description_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_15"
@@ -28,7 +28,7 @@
                 android:padding="@dimen/margin_10">
 
                 <TextView
-                    android:id="@+id/tv_title_1"
+                    android:id="@+id/tv_description_title"
                     style="@style/App_TextViewStyle_font_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     android:textColorHint="@color/ext_color_hint_light"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_1" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description_title" />
 
                 <Button
                     android:id="@+id/bt_save_1"
@@ -77,15 +77,15 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_2"
+            android:id="@+id/options_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_15"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/size_5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -98,12 +98,12 @@
                 android:padding="@dimen/margin_10">
 
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tv_question"
                     style="@style/App_TextViewStyle_font_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/padding_7"
+                    android:padding="@dimen/padding_5"
                     android:text="@string/description"
                     android:textColor="@color/text_color_g"
                     android:textSize="@dimen/txt_15"
@@ -112,13 +112,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:layout_margin="@dimen/margin_10"
+                    android:layout_margin="@dimen/margin_5"
                     android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layerType="software"
                     android:src="@drawable/dotted"
-                    app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_question"/>
 
 
                 <androidx.constraintlayout.widget.Guideline
@@ -157,6 +157,173 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/photo_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
+            app:cardCornerRadius="@dimen/size_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/options_cardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/photo_tv"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_7"
+                    android:text="@string/photo_description"
+                    android:textColor="@color/text_color_hint"
+                    android:textSize="@dimen/txt_15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layerType="software"
+                    android:src="@drawable/dotted"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photo_tv" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_2"
+                    android:layout_width="@dimen/size_250"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    app:cardBackgroundColor="@color/gray_too_light"
+                    app:cardCornerRadius="@dimen/size_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view1">
+
+                    <ImageView
+                        android:id="@+id/answer_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin_10"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_mail"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_pic"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_7"
+                    android:text="@string/take_a_photo"
+                    android:textColor="@color/red_dark"
+                    android:textSize="@dimen/txt_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_2" />
+
+
+                <Button
+                    android:id="@+id/save_image_button"
+                    style="@style/App_ButtonStyle"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/button_35"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:background="@drawable/button_round_red"
+                    android:text="@string/save"
+                    android:textSize="@dimen/txt_13"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pic"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/done_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tv_done_message"
+                    style="@style/App_TextViewStyle_font_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_5"
+                    android:text="Task Complete"
+                    android:textColor="@color/text_color_g"
+                    android:textSize="@dimen/txt_15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_margin="@dimen/margin_5"
+                    android:id="@+id/done_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layerType="software"
+                    android:src="@drawable/dotted"
+                    app:layout_constraintTop_toBottomOf="@id/tv_done_message"/>
+
+
+                <Button
+                    android:padding="@dimen/padding_5"
+                    android:id="@+id/button_save"
+                    style="@style/App_ButtonStyle"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/button_40"
+                    android:layout_margin="@dimen/margin_10"
+                    android:background="@drawable/button_round_green"
+                    android:text="Save"
+                    android:textSize="@dimen/txt_13"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/done_view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

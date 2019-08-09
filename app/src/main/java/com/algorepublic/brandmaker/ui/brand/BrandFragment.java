@@ -15,9 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.algorepublic.brandmaker.R;
 import com.algorepublic.brandmaker.databinding.FragmentCategoryBinding;
+import com.algorepublic.brandmaker.model.BaseResponse;
+import com.algorepublic.brandmaker.model.BrandModel;
 import com.algorepublic.brandmaker.ui.category.CategoryAdapter;
 import com.algorepublic.brandmaker.ui.category.CategoryFragment;
 import com.algorepublic.brandmaker.ui.category.CategoryViewModel;
+import com.algorepublic.brandmaker.utils.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +29,17 @@ import java.util.List;
  * Created By apple on 2019-08-02
  */
 public class BrandFragment extends Fragment {
-    private FragmentCategoryBinding b;
+    private FragmentCategoryBinding binding;
     private BrandViewModel viewModel;
 
-    private List<String> myActivities = new ArrayList<>();
+    private List<BrandModel> brandsArrayList = new ArrayList<>();
     private BrandAdapter brandAdapter;
+    private int categoryId;
 
-    public static BrandFragment getInstance() {
+    public static BrandFragment getInstance(int categoryId) {
         BrandFragment fragment = new BrandFragment();
         Bundle args = new Bundle();
+        args.putInt("CategoryID",categoryId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,38 +47,43 @@ public class BrandFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = DataBindingUtil.inflate(inflater, R.layout.fragment_category, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_category, container, false);
         viewModel = ViewModelProviders.of(this).get(BrandViewModel.class);
 
+        categoryId=getArguments().getInt("CategoryID");
         setRecyclerView();
 
-        viewModel.getMyActivityList().observe(this, new Observer<List<String>>() {
+        viewModel.getResponseObservable().observe(this, new Observer<BaseResponse>() {
             @Override
-            public void onChanged(@Nullable List<String> mList) {
-                updateList(mList);
+            public void onChanged(BaseResponse baseResponse) {
+                binding.progressBar.setVisibility(View.GONE);
+                if (baseResponse != null) {
+                    if (baseResponse.isSuccess() && baseResponse.getData() != null) {
+                        if (baseResponse.getData().getBrands().size() > 0) {
+                            brandsArrayList.clear();
+                            brandsArrayList.addAll(baseResponse.getData().getBrands());
+                        } else {
+                            binding.tvEmpty.setText("No Brand Found");
+                            binding.tvEmpty.setVisibility(View.VISIBLE);
+                        }
+                        brandAdapter.notifyDataSetChanged();
+                    } else {
+                        Helper.snackBarWithAction(binding.getRoot(), getActivity(), baseResponse.getMessage());
+                    }
+                }
             }
         });
 
-        viewModel.setData();
+        viewModel.getBrandsApi(categoryId);
 
-        return b.getRoot();
+        return binding.getRoot();
     }
 
     private void setRecyclerView() {
-        b.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        b.recyclerView.setNestedScrollingEnabled(false);
-        myActivities = new ArrayList<>();
-        brandAdapter = new BrandAdapter(getContext(), myActivities);
-        b.recyclerView.setAdapter(brandAdapter);
-    }
-
-    private void updateList(List<String> mList){
-
-        Handler handler= new Handler();
-        handler.postDelayed(() -> {
-            myActivities.addAll(mList);
-            brandAdapter.notifyDataSetChanged();
-        },1000);
-
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.setNestedScrollingEnabled(false);
+        brandsArrayList = new ArrayList<>();
+        brandAdapter = new BrandAdapter(getContext(), brandsArrayList);
+        binding.recyclerView.setAdapter(brandAdapter);
     }
 }

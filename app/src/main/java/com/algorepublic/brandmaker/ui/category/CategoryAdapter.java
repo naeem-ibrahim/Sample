@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.algorepublic.brandmaker.BaseActivity;
 import com.algorepublic.brandmaker.R;
+import com.algorepublic.brandmaker.model.CategoryModel;
 import com.algorepublic.brandmaker.ui.tabs.BrandsCheckoutTab;
 import com.algorepublic.brandmaker.ui.tabs.CategoryCheckoutTab;
 
@@ -21,11 +22,11 @@ import java.util.List;
  */
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.RowViewHolder> {
 
-    private List<String> myActivities;
+    private List<CategoryModel> categories;
     private Context mContext;
 
-    public CategoryAdapter(Context mContext, List<String> myActivities) {
-        this.myActivities = myActivities;
+    public CategoryAdapter(Context mContext, List<CategoryModel> categories) {
+        this.categories = categories;
         this.mContext = mContext;
     }
 
@@ -38,17 +39,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.RowVie
     @Override
     public void onBindViewHolder(RowViewHolder holder, final int position) {
 
+        CategoryModel categoryModel=categories.get(position);
+        holder.tv_title.setText(categoryModel.getName());
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((BaseActivity) mContext).callFragmentWithoutAnimation(R.id.container, BrandsCheckoutTab.getInstance(), null);
+                ((BaseActivity) mContext).callFragmentWithoutAnimation(R.id.container, BrandsCheckoutTab.getInstance(categoryModel.getId(),categoryModel.getStoreId(),categoryModel.getName()), null);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return myActivities == null ? 0 : myActivities.size();
+        return categories == null ? 0 : categories.size();
     }
 
     class RowViewHolder extends RecyclerView.ViewHolder {
